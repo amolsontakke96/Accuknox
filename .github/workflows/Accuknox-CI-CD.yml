@@ -1,4 +1,4 @@
-name: Docker Image CI
+name: Accuknox CI/CD
 
 on:
   push:
