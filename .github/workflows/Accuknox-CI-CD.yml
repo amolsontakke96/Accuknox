@@ -28,7 +28,7 @@ jobs:
           tags: amolsontakke96/accuknox:latest
 
   deploy-to-minikube:
-    runs-on: ubuntu:latest
+    runs-on: self-hosted
     needs: build
     steps:
       - name: Checkout code
