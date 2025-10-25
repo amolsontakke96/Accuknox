@@ -5,9 +5,9 @@ metadata:
 spec:
   ingressClassName: nginx
   tls:
-  - hosts:
-      - wisecow.local
-    secretName: wisecow-tls
+   - hosts:
+     - wisecow.local
+     secretName: wisecow-tls
   rules:
     - host: wisecow.local
       http:
