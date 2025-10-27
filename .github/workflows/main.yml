@@ -13,7 +13,7 @@ env:
 jobs:
   build:
     name: Build Docker Image
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
       - name: Checkout Code
@@ -34,7 +34,7 @@ jobs:
   
   push:
     name: Push Docker Image
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     needs: build
     
     steps:
@@ -63,7 +63,7 @@ jobs:
   
   deploy:
     name: Deploy to Kubernetes
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     needs: push
 
     steps:
