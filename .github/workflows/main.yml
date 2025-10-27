@@ -86,3 +86,11 @@ jobs:
           sed -i "s|\(image: $REGISTRY/$IMAGE_NAME:\).*|\1$IMAGE_TAG|" wisecow-k8s/deployment.yaml
           echo "After update:"
           grep "image:" wisecow-k8s/deployment.yaml
+      
+      - name: Apply Kubernetes Deployment
+        run: |
+          echo "Deploying to kubernetes..."
+          kubectl apply -f wisecow-k8s/deployment.yaml
+          kubectl apply -f wisecow-k8s/service.yaml
+          kubectl apply -f wisecow-k8s/ingress.yaml
+          echo "Deployment complete"
