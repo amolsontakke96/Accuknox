@@ -6,7 +6,7 @@ on:
       - main
 
 env:
-  IMAGE_NAME: wisecow
+  IMAGE_NAME: accuknox
   REGISTRY: ${{ secrets.DOCKERHUB_USERNAME }}
   IMAGE_TAG: ${{ github.sha }}
 
