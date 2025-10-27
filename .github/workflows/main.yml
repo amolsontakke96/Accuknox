@@ -10,7 +10,7 @@ env:
   REGISTRY: ${{ secrets.DOCKERHUB_USERNAME }}
   IMAGE_TAG: ${{ github.sha }}
 
-job:
+jobs:
   build:
     name: Build Docker Image
     runs-on: ubuntu-latest
@@ -64,10 +64,9 @@ job:
           echo "${{ secrets.KUBE_CONFIG_DATA }}" | base64 --decode > $HOME/.kube/config
 
       - name: Update Image tag in deployment file
-          run: |
-            echo: "Before Update"
-            grep "image:" wisecow-k8s/deployment.yaml || true
-
-            sed -i "s|\(image: $REGISTRY/$IMAGE_NAME:\).*|\1$IMAGE_TAG|" wisecow-k8s/deployment.yaml
-            echo "✅ After update:"
-            grep "image:" deployment.yaml
+        run: |
+          echo: "Before Update"
+          grep "image:" wisecow-k8s/deployment.yaml || true
+          sed -i "s|\(image: $REGISTRY/$IMAGE_NAME:\).*|\1$IMAGE_TAG|" wisecow-k8s/deployment.yaml
+          echo "After update:"
+          grep "image:" wisecow-k8s/deployment.yaml
