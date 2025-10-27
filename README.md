@@ -117,6 +117,12 @@ curl -I https://wisecow.local/
 
 ```
 
+### CI/CD GitHub Action
+
+```bash
+cd 
+```
+
 ## Problem statement-2
 
 
@@ -174,8 +180,7 @@ cat logs/application_health.log
 cat logs/system_health.log
 ```
 
-
-## problem statement-3
+# problem statement-3
 
 
 ## Deploy kube armor
@@ -187,7 +192,7 @@ helm upgrade --install kubearmor-operator kubearmor/kubearmor-operator -n kubear
 kubectl apply -f https://raw.githubusercontent.com/kubearmor/KubeArmor/main/pkg/KubeArmorOperator/config/samples/sample-config.yml
 ```
 
-check kubearmor pods
+## check kubearmor pods
 
 ```bash
 kubectl get pods -n kubearmor
@@ -205,18 +210,23 @@ git clone https://github.com/amolsontakke96/Accuknox
 cd Accuknox/wisecow-k8s
 ```
 
-Deploy kubernetes manifest file for kubearmor zero trust policy from Accuknox/wisecow-k8s directory:
+### Deploy kubernetes manifest file for kubearmor zero trust policy from Accuknox/wisecow-k8s directory:
 
 ```bash
 kubectl apply -f zero-trust-policy.yaml
 ```
 
-Check the kubearmor policy
+### Check the kubearmor policy
 
 ```bash
 kubectl get kubearmorpolicy
 ```
 
-error handling
+### Screen shot of Error inside pod
+
+![alt text](pod-screenshot.png)
 
 
+### Screen shot of Error logs Inside Kubearmor
+
+![alt text](Kubearmor-logs.png)
