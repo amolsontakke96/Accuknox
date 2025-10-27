@@ -1,0 +1,84 @@
+apiVersion: security.kubearmor.com/v1
+kind: KubeArmorPolicy
+metadata:
+  name: zero-trust-wisecow
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: wisecow
+
+  file:
+    matchPaths:
+      # --- Required executables ---
+      - path: /usr/games/cowsay
+      - path: /usr/games/fortune
+      - path: /usr/bin/perl
+      - path: /usr/bin/env
+      - path: /usr/bin/nc
+      - path: /bin/bash
+      - path: /bin/sh
+      - path: /app/wisecow.sh
+      - path: /app/response
+
+    matchDirectories:
+      # --- App directory ---
+      - dir: /app/
+        recursive: true
+
+      # --- Perl runtime and modules ---
+      - dir: /usr/share/perl/
+        recursive: true
+      - dir: /usr/share/perl5/
+        recursive: true
+      - dir: /usr/lib/perl/
+        recursive: true
+      - dir: /usr/lib/x86_64-linux-gnu/perl/
+        recursive: true
+
+      # --- Fortune data ---
+      - dir: /usr/share/games/fortunes/
+        recursive: true
+
+      # --- Shared libraries for system binaries ---
+      - dir: /lib/
+        recursive: true
+      - dir: /lib64/
+        recursive: true
+      - dir: /usr/lib/
+        recursive: true
+      - dir: /usr/lib/x86_64-linux-gnu/
+        recursive: true
+
+      # --- Core system directories (for /usr/bin/env, bash loader, etc.) ---
+      - dir: /bin/
+        recursive: true
+      - dir: /usr/bin/
+        recursive: true
+      - dir: /usr/share/cowsay/cows/
+        recursive: true
+
+  process:
+    matchPaths:
+      - path: /usr/bin/env
+      - path: /usr/bin/perl
+      - path: /bin/bash
+      - path: /bin/sh
+      - path: /usr/bin/nc
+      - path: /usr/bin/cat
+      - path: /usr/bin/sleep
+      - path: /usr/games/cowsay
+      - path: /usr/games/fortune
+    matchDirectories:
+      - dir: /usr/games/
+        recursive: true
+      - dir: /bin/
+        recursive: true
+      - dir: /usr/bin/
+        recursive: true
+  network:
+    matchProtocols:
+      - protocol: tcp
+      - protocol: udp
+
+  action: Allow
