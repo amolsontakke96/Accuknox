@@ -65,7 +65,7 @@ jobs:
 
       - name: Update Image tag in deployment file
         run: |
-          echo: "Before Update"
+          echo "Before Update"
           grep "image:" wisecow-k8s/deployment.yaml || true
           sed -i "s|\(image: $REGISTRY/$IMAGE_NAME:\).*|\1$IMAGE_TAG|" wisecow-k8s/deployment.yaml
           echo "After update:"
