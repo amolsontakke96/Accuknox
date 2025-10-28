@@ -73,7 +73,7 @@ kubectl get ingress
 
 ## ✅ Install NGINX Ingress Controller via Helm
 
-1 Add the Ingress NGINX Helm repository
+1 Add the Ingress NGINX Controller Helm repository
 
 ```bash
 helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
