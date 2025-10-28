@@ -153,7 +153,7 @@ pip install requests
 
 ## 🔁 Clone the Git Repository
 
-First, clone the Helm chart repository:
+First, clone the Github repository:
 
 ```bash
 
@@ -200,7 +200,14 @@ helm repo update kubearmor
 helm upgrade --install kubearmor-operator kubearmor/kubearmor-operator -n kubearmor --create-namespace
 kubectl apply -f https://raw.githubusercontent.com/kubearmor/KubeArmor/main/pkg/KubeArmorOperator/config/samples/sample-config.yml
 ```
-
+## install Kubearmor cli to check logs
+```bash
+curl -sfL http://get.kubearmor.io/ | sudo sh -s -- -b /usr/local/bin
+```
+## Check logs in Kubearmor
+```bash
+karmor logs --json
+```
 check kubearmor pods
 
 ```bash
@@ -210,7 +217,7 @@ kubectl get pods -n kubearmor
 
 ## 🔁 Clone the Git Repository
 
-First, clone the Helm chart repository:
+First, clone the Github repository:
 
 ```bash
 
