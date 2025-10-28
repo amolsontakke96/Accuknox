@@ -238,10 +238,10 @@ Check the kubearmor policy
 kubectl get kubearmorpolicy
 ```
 
-Running Update command inside pod
+## Running Update command inside pod
 
 ![pod screenshot](pod-screenshot.png)
 
-Running Error logs in kubearmor 
+## Running Error logs in kubearmor 
 
 ![kubearmor logs](Kubearmor-logs.png)
