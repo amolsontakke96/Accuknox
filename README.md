@@ -28,7 +28,7 @@ kubectl create secret tls wisecow-tls --key tls.key --cert tls.crt
 
 ## 🔁 Clone the Git Repository
 
-First, clone the Helm chart repository:
+First, clone the Github repository:
 
 ```bash
 
